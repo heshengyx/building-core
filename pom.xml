@@ -21,8 +21,8 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.myself.finance-skeleton</groupId>
-			<artifactId>finance-skeleton</artifactId>
+			<groupId>com.house.building</groupId>
+			<artifactId>building-skeleton</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
