@@ -8,7 +8,6 @@ import com.house.building.dao.BaseDao;
 import com.house.building.dao.IBuildingDao;
 import com.house.building.entity.Building;
 import com.house.building.mapper.IBuildingMapper;
-import com.house.building.page.Page;
 import com.house.building.param.BuildingQueryParam;
 
 /**

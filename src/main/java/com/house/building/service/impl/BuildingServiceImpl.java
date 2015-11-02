@@ -1,6 +1,5 @@
 package com.house.building.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.house.building.dao.IBuildingDao;
 import com.house.building.entity.Building;
+import com.house.building.page.IPage;
 import com.house.building.page.Page;
 import com.house.building.param.BuildingQueryParam;
 import com.house.building.service.IBuildingService;
-import com.myself.finance.entity.User;
-import com.myself.finance.page.IPage;
 
 @Service("buildingService")
 public class BuildingServiceImpl implements IBuildingService {
@@ -45,19 +43,19 @@ public class BuildingServiceImpl implements IBuildingService {
 	}
 
 	@Override
-	public Page<Building> query(BuildingQueryParam param) {
-		Page<Building> page = null;
+	public IPage<Building> query(BuildingQueryParam param, int pageNo, int pageSize) {
+		List<Building> list = null;
+		pageNo = pageNo <= 0 ? 1 : pageNo;
+		pageSize = pageSize <= 0 ? 10 : pageSize;
+		// 查询总记录数
 		int count = buildingDao.count(param);
 		if (count > 0) {
-			int pageNo = (param.getPage() <= 0) ? 1 : param.getPage();
-			int start = (pageNo - 1) * param.getLength();
-			int end = param.getLength();
-			List<Building> list = buildingDao.query(param, start, end);
-			page = new Page<Building>(list, count, pageNo, end);
-		} else {
-			page = new Page<Building>(new ArrayList<Building>(), 0, 1, 1);
+			int start = (pageNo - 1) * pageSize;
+			int end = start + pageSize;
+			// 查询当前页记录
+			list = buildingDao.query(param, start, end);
 		}
-		return page;
+		return new Page<Building>(list, count, pageNo, pageSize);
 	}
 
 }
