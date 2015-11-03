@@ -6,7 +6,7 @@
 <result column="BUILDING_NAME" property="buildingName" jdbcType="VARCHAR" />
 <result column="BUILDING_YEAR" property="buildingYear" jdbcType="VARCHAR" />
 <result column="BUILDING_FLOOR" property="buildingFloor" jdbcType="VARCHAR" />
-<result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+<result column="BUILDING_ADDRESS" property="buildingAddress" jdbcType="VARCHAR" />
 <result column="STATUS" property="status" jdbcType="VARCHAR" />
 <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
 <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
