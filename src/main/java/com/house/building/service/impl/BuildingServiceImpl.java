@@ -43,19 +43,17 @@ public class BuildingServiceImpl implements IBuildingService {
 	}
 
 	@Override
-	public IPage<Building> query(BuildingQueryParam param, int pageNo, int pageSize) {
+	public IPage<Building> query(BuildingQueryParam param, int page, int rows) {
 		List<Building> list = null;
-		pageNo = pageNo <= 0 ? 1 : pageNo;
-		pageSize = pageSize <= 0 ? 10 : pageSize;
-		// 查询总记录数
+		page = page <= 0 ? 1 : page;
+		rows = rows <= 0 ? 10 : rows;
 		int count = buildingDao.count(param);
 		if (count > 0) {
-			int start = (pageNo - 1) * pageSize;
-			int end = start + pageSize;
-			// 查询当前页记录
+			int start = (page - 1) * rows;
+			int end = start + rows;
 			list = buildingDao.query(param, start, end);
 		}
-		return new Page<Building>(list, count, pageNo, pageSize);
+		return new Page<Building>(list, count, page, rows);
 	}
 
 }

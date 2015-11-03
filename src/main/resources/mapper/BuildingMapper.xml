@@ -4,6 +4,9 @@
 	<resultMap type="com.house.building.entity.Building" id="buildingResult">
 		<id column="ID" property="id" jdbcType="VARCHAR" />
 <result column="BUILDING_NAME" property="buildingName" jdbcType="VARCHAR" />
+<result column="BUILDING_YEAR" property="buildingYear" jdbcType="VARCHAR" />
+<result column="BUILDING_FLOOR" property="buildingFloor" jdbcType="VARCHAR" />
+<result column="ADDRESS" property="address" jdbcType="VARCHAR" />
 <result column="STATUS" property="status" jdbcType="VARCHAR" />
 <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
 <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
@@ -22,15 +25,12 @@
 		<if test="id != null and id != ''">
 			AND ID = #{id, jdbcType=VARCHAR}
 		</if>
-		<if test="userId != null and userId != ''">
-			AND USER_ID = #{userId, jdbcType=VARCHAR}
-		</if>
 	</select>
 	<select id="count" resultType="java.lang.Integer">
 		SELECT COUNT(1) <include refid="sqlQuery"/>
 	</select>
 	<select id="query" resultMap="buildingResult">
-		SELECT a.* FROM <include refid="sqlQuery"/>
+		SELECT a.* <include refid="sqlQuery"/>
 			order by a.CREATE_TIME desc limit #{start}, #{end}
 	</select>
 	

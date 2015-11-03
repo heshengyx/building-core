@@ -68,14 +68,57 @@ CREATE TABLE BUILDING
     BUILDING_NAME VARCHAR(100),
     BUILDING_YEAR VARCHAR(100),
     BUILDING_FLOOR VARCHAR(100),
+    ADDRESS VARCHAR(100),
     STATUS CHAR(1),
     CREATE_TIME TIMESTAMP,
     UPDATE_TIME TIMESTAMP,
     REMARKS VARCHAR(1000),
     PRIMARY KEY (ID)
 );
-INSERT INTO BUILDING(ID, BUILDING_NAME, BUILDING_YEAR, BUILDING_FLOOR, STATUS) VALUES('c78fc614ce459cc168000', '锟斤拷锟较广场', '2001', '56', '1')
-
+INSERT
+INTO
+    BUILDING
+    (
+        ID,
+        BUILDING_NAME,
+        BUILDING_YEAR,
+        BUILDING_FLOOR,
+        ADDRESS,
+        STATUS,
+        CREATE_TIME
+    )
+    VALUES
+    (
+        'c78fc614ce459cc168000',
+        '益田花园',
+        '2001',
+        '56',
+        '益田路十一街道',
+        '1',
+        now()
+    );
+INSERT
+INTO
+    BUILDING
+    (
+        ID,
+        BUILDING_NAME,
+        BUILDING_YEAR,
+        BUILDING_FLOOR,
+        ADDRESS,
+        STATUS,
+        CREATE_TIME
+    )
+    VALUES
+    (
+        'c78fc614ce459cc168001',
+        '联合广场',
+        '2002',
+        '56',
+        '益田路十二街道',
+        '1',
+        now()
+    );
 CREATE TABLE REGION
 (
     ID VARCHAR(50) NOT NULL,
