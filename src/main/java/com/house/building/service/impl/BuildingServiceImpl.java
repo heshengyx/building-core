@@ -41,8 +41,7 @@ public class BuildingServiceImpl implements IBuildingService {
 
 	@Override
 	public Building getDataById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return buildingDao.getDataById(id);
 	}
 
 	@Override

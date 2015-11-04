@@ -20,11 +20,8 @@
 		</if>
 	</sql>
 	
-	<select id="getData" resultMap="buildingResult">
-		SELECT * FROM ACCOUNT WHERE 1=1
-		<if test="id != null and id != ''">
-			AND ID = #{id, jdbcType=VARCHAR}
-		</if>
+	<select id="getDataById" resultMap="buildingResult">
+		SELECT * FROM BUILDING WHERE ID = #{id, jdbcType=VARCHAR}
 	</select>
 	<select id="count" resultType="java.lang.Integer">
 		SELECT COUNT(1) <include refid="sqlQuery"/>
