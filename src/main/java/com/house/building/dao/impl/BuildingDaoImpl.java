@@ -11,12 +11,12 @@ import com.house.building.mapper.IBuildingMapper;
 import com.house.building.param.BuildingQueryParam;
 
 /**
- * ÃèÊö£º
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * 
  * <pre>HISTORY
  * ****************************************************************************
  *  ID   DATE           PERSON          REASON
- *  1    2015Äê10ÔÂ30ÈÕ      608279         Create
+ *  1    2015ï¿½ï¿½10ï¿½ï¿½30ï¿½ï¿½      608279         Create
  * ****************************************************************************
  * </pre>
  * @author 608279
@@ -39,8 +39,8 @@ public class BuildingDaoImpl extends BaseDao<IBuildingMapper> implements IBuildi
 
 	@Override
 	public int deleteById(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+		IBuildingMapper mapper = getMapper(IBuildingMapper.class);
+		return mapper.deleteById(id);
 	}
 
 	@Override

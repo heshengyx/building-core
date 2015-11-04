@@ -56,4 +56,8 @@ UPDATE_TIME = #{updateTime, jdbcType=TIMESTAMP},
 		</set>
 		where id = #{id, jdbcType=NUMERIC} AND USER_ID = #{userId, jdbcType=VARCHAR}
 	</update>
+	
+	<delete id="deleteById">
+		delete from BUILDING a where a.ID = #{id, jdbcType=VARCHAR}
+	</delete>
 </mapper>

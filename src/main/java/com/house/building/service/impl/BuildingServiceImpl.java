@@ -11,6 +11,7 @@ import com.house.building.page.IPage;
 import com.house.building.page.Page;
 import com.house.building.param.BuildingQueryParam;
 import com.house.building.service.IBuildingService;
+import com.myself.common.exception.ServiceException;
 
 @Service("buildingService")
 public class BuildingServiceImpl implements IBuildingService {
@@ -31,9 +32,11 @@ public class BuildingServiceImpl implements IBuildingService {
 	}
 
 	@Override
-	public int deleteById(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void deleteById(String id) {
+		int count = buildingDao.deleteById(id);
+		if (count < 1) {
+			throw new ServiceException("删除失败");
+		}
 	}
 
 	@Override
