@@ -33,8 +33,8 @@ public class BuildingDaoImpl extends BaseDao<IBuildingMapper> implements IBuildi
 
 	@Override
 	public int update(Building param) {
-		// TODO Auto-generated method stub
-		return 0;
+		IBuildingMapper mapper = getMapper(IBuildingMapper.class);
+		return mapper.update(param);
 	}
 
 	@Override

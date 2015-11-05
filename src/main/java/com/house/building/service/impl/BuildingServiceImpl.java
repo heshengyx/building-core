@@ -1,5 +1,6 @@
 package com.house.building.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,12 @@ public class BuildingServiceImpl implements IBuildingService {
 	}
 
 	@Override
-	public int update(Building param) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void update(Building param) {
+		param.setUpdateTime(new Date());
+		int count = buildingDao.update(param);
+		if (count < 1) {
+			throw new ServiceException("更新失败");
+		}
 	}
 
 	@Override

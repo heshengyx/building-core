@@ -44,14 +44,17 @@
 	</insert>
 	
 	<update id="update">
-		update ACCOUNT
+		update BUILDING
 		<set>
-<if test="balance != 0">
-	BALANCE = #{balance, jdbcType=NUMERIC},
+<if test="param.buildingName != null and param.buildingName != ''">
+	BUILDING_NAME = #{param.buildingName, jdbcType=VARCHAR},
 </if>
-UPDATE_TIME = #{updateTime, jdbcType=TIMESTAMP},
+<if test="param.buildingAddress != null and param.buildingAddress != ''">
+	BUILDING_ADDRESS = #{param.buildingAddress, jdbcType=VARCHAR},
+</if>
+UPDATE_TIME = #{param.updateTime, jdbcType=TIMESTAMP},
 		</set>
-		where id = #{id, jdbcType=NUMERIC} AND USER_ID = #{userId, jdbcType=VARCHAR}
+		where id = #{param.id, jdbcType=VARCHAR}
 	</update>
 	
 	<delete id="deleteById">
