@@ -87,6 +87,18 @@ CREATE TABLE BUILDING_IMAGE
     REMARKS VARCHAR(1000),
     PRIMARY KEY (ID)
 );
+CREATE TABLE BUILDING_UNIT
+(
+    ID VARCHAR(50) NOT NULL,
+    BUILDING_ID VARCHAR(50),
+    NAME VARCHAR(100),
+    FLOOR VARCHAR(100),
+    STATUS CHAR(1),
+    CREATE_TIME TIMESTAMP,
+    UPDATE_TIME TIMESTAMP,
+    REMARKS VARCHAR(1000),
+    PRIMARY KEY (ID)
+);
 INSERT
 INTO
     BUILDING
@@ -128,6 +140,26 @@ INTO
         '2002',
         '56',
         '益田路十二街道',
+        '1',
+        now()
+    );
+INSERT
+INTO
+    BUILDING_UNIT
+    (
+        ID,
+        BUILDING_ID,
+        NAME,
+        FLOOR,
+        STATUS,
+        CREATE_TIME
+    )
+    VALUES
+    (
+        'd78fc614ce459cc168000',
+        'c78fc614ce459cc168000',
+        'A栋',
+        '56',
         '1',
         now()
     );
