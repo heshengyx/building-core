@@ -13,6 +13,7 @@ import com.house.building.page.Page;
 import com.house.building.param.BuildingQueryParam;
 import com.house.building.service.IBuildingService;
 import com.myself.common.exception.ServiceException;
+import com.myself.common.utils.UIDGeneratorUtil;
 
 @Service("buildingService")
 public class BuildingServiceImpl implements IBuildingService {
@@ -21,9 +22,14 @@ public class BuildingServiceImpl implements IBuildingService {
 	private IBuildingDao buildingDao;
 	
 	@Override
-	public int save(Building param) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void save(Building param) {
+		param.setId(UIDGeneratorUtil.getUID());
+		param.setStatus("1");
+		param.setCreateTime(new Date());
+		int count = buildingDao.save(param);
+		if (count < 1) {
+			throw new ServiceException("新增失败");
+		}
 	}
 
 	@Override

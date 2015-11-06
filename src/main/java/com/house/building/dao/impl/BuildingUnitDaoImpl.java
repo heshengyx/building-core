@@ -21,8 +21,8 @@ public class BuildingUnitDaoImpl extends BaseDao<IBuildingUnitMapper> implements
 
 	@Override
 	public int update(BuildingUnit param) {
-		// TODO Auto-generated method stub
-		return 0;
+		IBuildingUnitMapper mapper = getMapper(IBuildingUnitMapper.class);
+		return mapper.update(param);
 	}
 
 	@Override
@@ -33,8 +33,8 @@ public class BuildingUnitDaoImpl extends BaseDao<IBuildingUnitMapper> implements
 
 	@Override
 	public BuildingUnit getDataById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		IBuildingUnitMapper mapper = getMapper(IBuildingUnitMapper.class);
+		return mapper.getDataById(id);
 	}
 
 	@Override

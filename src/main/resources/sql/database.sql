@@ -163,6 +163,26 @@ INTO
         '1',
         now()
     );
+INSERT
+INTO
+    BUILDING_UNIT
+    (
+        ID,
+        BUILDING_ID,
+        NAME,
+        FLOOR,
+        STATUS,
+        CREATE_TIME
+    )
+    VALUES
+    (
+        'd78fc614ce459cc168001',
+        'c78fc614ce459cc168000',
+        'B栋',
+        '56',
+        '1',
+        now()
+    );
 CREATE TABLE REGION
 (
     ID VARCHAR(50) NOT NULL,

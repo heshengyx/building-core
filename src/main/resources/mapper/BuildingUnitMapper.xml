@@ -3,6 +3,7 @@
 <mapper namespace="com.house.building.mapper.IBuildingUnitMapper">
 	<resultMap type="com.house.building.entity.BuildingUnit" id="buildingUnitResult">
 		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="BUILDING_ID" property="buildingId" jdbcType="VARCHAR" />
 <result column="NAME" property="name" jdbcType="VARCHAR" />
 <result column="FLOOR" property="floor" jdbcType="VARCHAR" />
 <result column="STATUS" property="status" jdbcType="VARCHAR" />
@@ -16,10 +17,11 @@
 		<if test="param.name != null and param.name != ''">
 			and a.NAME = #{param.name}
 		</if>
+		and a.BUILDING_ID = #{param.buildingId}
 	</sql>
 	
 	<select id="getDataById" resultMap="buildingUnitResult">
-		SELECT * FROM BUILDING WHERE ID = #{id, jdbcType=VARCHAR}
+		SELECT * FROM BUILDING_UNIT WHERE ID = #{id, jdbcType=VARCHAR}
 	</select>
 	<select id="count" resultType="java.lang.Integer">
 		SELECT COUNT(1) <include refid="sqlQuery"/>

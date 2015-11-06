@@ -1,5 +1,6 @@
 package com.house.building.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.house.building.page.IPage;
 import com.house.building.page.Page;
 import com.house.building.param.BuildingUnitQueryParam;
 import com.house.building.service.IBuildingUnitService;
+import com.myself.common.exception.ServiceException;
 
 @Service("buildingUnitService")
 public class BuildingUnitServiceImpl implements IBuildingUnitService {
@@ -26,8 +28,11 @@ public class BuildingUnitServiceImpl implements IBuildingUnitService {
 
 	@Override
 	public void update(BuildingUnit param) {
-		// TODO Auto-generated method stub
-
+		param.setUpdateTime(new Date());
+		int count = buildingUnitDao.update(param);
+		if (count < 1) {
+			throw new ServiceException("更新失败");
+		}
 	}
 
 	@Override
@@ -38,8 +43,7 @@ public class BuildingUnitServiceImpl implements IBuildingUnitService {
 
 	@Override
 	public BuildingUnit getDataById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return buildingUnitDao.getDataById(id);
 	}
 
 	@Override
