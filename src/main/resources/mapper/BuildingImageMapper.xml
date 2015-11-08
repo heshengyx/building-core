@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.house.building.mapper.IBuildingUnitMapper">
-	<resultMap type="com.house.building.entity.BuildingUnit" id="buildingUnitResult">
+<mapper namespace="com.house.building.mapper.IBuildingImageMapper">
+	<resultMap type="com.house.building.entity.BuildingImage" id="buildingImageResult">
 		<id column="ID" property="id" jdbcType="VARCHAR" />
 		<result column="BUILDING_ID" property="buildingId" jdbcType="VARCHAR" />
-<result column="NAME" property="name" jdbcType="VARCHAR" />
-<result column="FLOOR" property="floor" jdbcType="VARCHAR" />
+<result column="TITLE" property="title" jdbcType="VARCHAR" />
+<result column="URL" property="url" jdbcType="VARCHAR" />
 <result column="STATUS" property="status" jdbcType="VARCHAR" />
 <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
 <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
@@ -13,34 +13,35 @@
 	</resultMap>
 
 	<sql id="sqlQuery">
-		FROM BUILDING_UNIT a where 1=1
-		<if test="param.name != null and param.name != ''">
-			and a.NAME = #{param.name}
-		</if>
+		FROM BUILDING_IMAGE a where 1=1
 		and a.BUILDING_ID = #{param.buildingId}
 	</sql>
 	
-	<select id="getDataById" resultMap="buildingUnitResult">
-		SELECT * FROM BUILDING_UNIT WHERE ID = #{id, jdbcType=VARCHAR}
+	<select id="getDataById" resultMap="buildingImageResult">
+		SELECT * FROM BUILDING_IMAGE WHERE ID = #{id, jdbcType=VARCHAR}
 	</select>
 	<select id="count" resultType="java.lang.Integer">
 		SELECT COUNT(1) <include refid="sqlQuery"/>
 	</select>
-	<select id="query" resultMap="buildingUnitResult">
+	<select id="query" resultMap="buildingImageResult">
 		SELECT a.* <include refid="sqlQuery"/>
 			order by a.CREATE_TIME desc limit #{start}, #{end}
 	</select>
+	<select id="list" resultMap="buildingImageResult">
+		SELECT a.* <include refid="sqlQuery"/>
+			order by a.CREATE_TIME desc
+	</select>
 	
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO ACCOUNT (ID, USER_ID, NAME, STATUS, BALANCE, CREATE_TIME, REMARKS)
+		INSERT INTO BUILDING_IMAGE (ID, BUILDING_ID, TITLE, URL, STATUS, CREATE_TIME, REMARKS)
 		VALUES (
-#{id, jdbcType=VARCHAR},
-#{userId, jdbcType=VARCHAR},
-#{name, jdbcType=VARCHAR},
-#{status, jdbcType=VARCHAR},
-#{balance, jdbcType=NUMERIC},
-#{createTime, jdbcType=TIMESTAMP},
-#{remarks, jdbcType=VARCHAR})
+#{param.id, jdbcType=VARCHAR},
+#{param.buildingId, jdbcType=VARCHAR},
+#{param.title, jdbcType=VARCHAR},
+#{param.url, jdbcType=VARCHAR},
+#{param.status, jdbcType=VARCHAR},
+#{param.createTime, jdbcType=TIMESTAMP},
+#{param.remarks, jdbcType=VARCHAR})
 	</insert>
 	
 	<update id="update">
@@ -58,6 +59,6 @@ UPDATE_TIME = #{param.updateTime, jdbcType=TIMESTAMP},
 	</update>
 	
 	<delete id="deleteById">
-		delete from BUILDING_UNIT a where a.ID = #{id, jdbcType=VARCHAR}
+		delete from BUILDING_IMAGE a where a.ID = #{id, jdbcType=VARCHAR}
 	</delete>
 </mapper>

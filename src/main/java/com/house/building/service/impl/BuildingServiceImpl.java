@@ -67,5 +67,4 @@ public class BuildingServiceImpl implements IBuildingService {
 		}
 		return new Page<Building>(list, count, page, rows);
 	}
-
 }

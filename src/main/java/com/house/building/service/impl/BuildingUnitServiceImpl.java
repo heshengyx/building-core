@@ -37,8 +37,10 @@ public class BuildingUnitServiceImpl implements IBuildingUnitService {
 
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
-
+		int count = buildingUnitDao.deleteById(id);
+		if (count < 1) {
+			throw new ServiceException("删除失败");
+		}
 	}
 
 	@Override

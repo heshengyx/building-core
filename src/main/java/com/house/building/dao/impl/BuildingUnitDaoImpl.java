@@ -27,8 +27,8 @@ public class BuildingUnitDaoImpl extends BaseDao<IBuildingUnitMapper> implements
 
 	@Override
 	public int deleteById(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+		IBuildingUnitMapper mapper = getMapper(IBuildingUnitMapper.class);
+		return mapper.deleteById(id);
 	}
 
 	@Override
