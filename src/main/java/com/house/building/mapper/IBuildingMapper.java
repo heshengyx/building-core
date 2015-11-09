@@ -7,18 +7,6 @@ import org.apache.ibatis.annotations.Param;
 import com.house.building.entity.Building;
 import com.house.building.param.BuildingQueryParam;
 
-/**
- * ÃèÊö£º
- * 
- * <pre>HISTORY
- * ****************************************************************************
- *  ID   DATE           PERSON          REASON
- *  1    2015Äê10ÔÂ30ÈÕ      608279         Create
- * ****************************************************************************
- * </pre>
- * @author 608279
- * @since 1.0
- */
 public interface IBuildingMapper {
 
 	int save(@Param("param") Building param);
