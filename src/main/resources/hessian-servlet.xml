@@ -18,5 +18,14 @@
         <property name="service" ref="buildingImageService" />  
         <property name="serviceInterface" value="com.house.building.service.IBuildingImageService" />  
     </bean>
+    <bean name="/houseService" class="org.springframework.remoting.caucho.HessianServiceExporter"> 
+        <property name="service" ref="houseService" />  
+        <property name="serviceInterface" value="com.house.building.service.IHouseService" />  
+    </bean>
+    <bean name="/houseImageService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="houseImageService" />
+        <property name="serviceInterface" value="com.house.building.service.IHouseImageService" />
+    </bean>
+    <!-- hessian-servlet-conf -->
 	
 </beans>
