@@ -67,4 +67,9 @@ public class BuildingServiceImpl implements IBuildingService {
 		}
 		return new Page<Building>(list, count, page, rows);
 	}
+
+	@Override
+	public List<Building> list(BuildingQueryParam param) {
+		return buildingDao.list(param);
+	}
 }

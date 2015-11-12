@@ -28,7 +28,11 @@
 	</select>
 	<select id="query" resultMap="buildingResult">
 		SELECT a.* <include refid="sqlQuery"/>
-			order by a.CREATE_TIME desc limit #{start}, #{end}
+			order by a.CREATE_TIME desc limit #{start, jdbcType=INTEGER}, #{end, jdbcType=INTEGER}
+	</select>
+	<select id="list" resultMap="buildingResult">
+		SELECT a.* <include refid="sqlQuery"/>
+			order by a.CREATE_TIME desc
 	</select>
 	
 	<insert id="save" useGeneratedKeys="true" keyProperty="id">

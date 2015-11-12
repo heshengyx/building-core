@@ -60,4 +60,10 @@ public class BuildingDaoImpl extends BaseDao<IBuildingMapper> implements IBuildi
 		IBuildingMapper mapper = getMapper(IBuildingMapper.class);
 		return mapper.query(param, start, end);
 	}
+
+	@Override
+	public List<Building> list(BuildingQueryParam param) {
+		IBuildingMapper mapper = getMapper(IBuildingMapper.class);
+		return mapper.list(param);
+	}
 }

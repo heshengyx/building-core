@@ -6,12 +6,12 @@ import com.house.building.entity.Building;
 import com.house.building.param.BuildingQueryParam;
 
 /**
- * ÃèÊö£º
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * 
  * <pre>HISTORY
  * ****************************************************************************
  *  ID   DATE           PERSON          REASON
- *  1    2015Äê10ÔÂ30ÈÕ      608279         Create
+ *  1    2015ï¿½ï¿½10ï¿½ï¿½30ï¿½ï¿½      608279         Create
  * ****************************************************************************
  * </pre>
  * @author 608279
@@ -26,4 +26,5 @@ public interface IBuildingDao {
 	
 	int count(BuildingQueryParam param);
 	List<Building> query(BuildingQueryParam param, int start, int end);
+	List<Building> list(BuildingQueryParam param);
 }
